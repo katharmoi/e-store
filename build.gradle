@@ -6,11 +6,10 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:4.0.0"
+        classpath "com.android.tools.build:gradle:4.0.1"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "de.mannodermaus.gradle.plugins:android-junit5:1.6.2.0"
 
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
     }
 }
 
@@ -18,7 +17,37 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url 'https://jitpack.io' }
     }
+}
+
+project.ext {
+    compiledSdkVersion = 29
+    minSdkVersion = 21
+    targetSdkVersion = 29
+
+    //Mockito
+    mockitoCoreVersion = "2.23.0"
+    mockitoKotlinVersion = "2.0.0"
+
+    //Truth
+    truthVersion= "0.42"
+
+    //Jupiter
+    jupiterVersion="5.6.2"
+
+    //RxJava
+    rxJavaVersion = "2.2.9"
+    rxAndroidVersion = "2.1.1"
+    rxBluetoothVersion = "2.1.1"
+    rxExtrasVersion = "0.1.33"
+
+    //test
+    mockKVersion = "1.8.7"
+
+    //Domain Versioning
+    domainVersionCode = 1
+    domainVersionName = "1.0"
 }
 
 task clean(type: Delete) {

@@ -1,10 +1,50 @@
-apply plugin: 'java-library'
-apply plugin: 'kotlin'
+apply plugin: 'com.android.library'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+apply plugin: 'de.mannodermaus.android-junit5'
+
+android {
+    compileSdkVersion project.compiledSdkVersion
+
+    defaultConfig {
+        minSdkVersion project.minSdkVersion
+        targetSdkVersion project.targetSdkVersion
+        versionCode project.domainVersionCode
+        versionName project.domainVersionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    //RxJava
+    implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+
+    //Unit Test
+    testImplementation "org.mockito:mockito-core:$project.mockitoCoreVersion"
+    testImplementation "io.mockk:mockk:$project.mockKVersion"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$project.mockitoKotlinVersion"
+    testImplementation "com.google.truth:truth:$project.truthVersion"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$project.jupiterVersion"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$project.jupiterVersion"
+    testImplementation "org.junit.jupiter:junit-jupiter-params:$project.jupiterVersion"
 }
 
-sourceCompatibility = "1.7"
-targetCompatibility = "1.7"
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
