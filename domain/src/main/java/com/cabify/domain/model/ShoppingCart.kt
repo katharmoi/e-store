@@ -9,10 +9,11 @@ class ShoppingCart(
     private vararg val discounts: Discount
 ) {
 
-
+    //used backing property to return immutable list
     private val _cart: MutableList<OrderItem> = mutableListOf()
     val cart: List<OrderItem> = _cart
 
+    //used backing property to return immutable list
     private val _appliedDiscounts: MutableList<String> = mutableListOf()
     val appliedDiscounts: List<String> = _appliedDiscounts
 

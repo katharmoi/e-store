@@ -1,18 +1,21 @@
 package com.cabify.domain.repository
 
+import com.cabify.domain.model.Item
 import com.cabify.domain.model.OrderItem
 import io.reactivex.Completable
-import io.reactivex.Flowable
+import io.reactivex.Single
 
 interface CartRepository {
 
-    fun add(item: OrderItem): Completable
+    fun add(item: Item): Completable
 
-    fun get(): Flowable<List<OrderItem>>
+    fun get(item: Item): Single<OrderItem>
 
-    fun delete(item: OrderItem): Completable
+    fun update(item: Item, qty: Int): Completable
 
-    fun update(item: OrderItem): Completable
+    fun delete(item: Item): Completable
 
-    fun clean(): Completable
+    fun getAll(): Single<List<OrderItem>>
+
+    fun clear(): Completable
 }
