@@ -9,6 +9,6 @@ class AddOrderUseCase(
 ) {
 
     operator fun invoke(order: Order): Completable {
-        return ordersRepository.addOrder(order)
+        return ordersRepository.add(order)
     }
 }

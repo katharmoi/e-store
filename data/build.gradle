@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
@@ -31,5 +32,38 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    androidTestImplementation "androidx.arch.core:core-testing:$arch_version"
+
+    //Unit Test
+    testImplementation "org.mockito:mockito-core:$project.mockitoCoreVersion"
+    testImplementation "io.mockk:mockk:$project.mockKVersion"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$project.mockitoKotlinVersion"
+    testImplementation "com.google.truth:truth:$project.truthVersion"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$project.jupiterVersion"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$project.jupiterVersion"
+    testImplementation "org.junit.jupiter:junit-jupiter-params:$project.jupiterVersion"
+
+
+    //RxJava
+    implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
+    implementation "com.github.davidmoten:rxjava2-extras:$rxExtrasVersion"
+
+    //Room
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    implementation "androidx.room:room-rxjava2:$room_version"
+    testImplementation "androidx.room:room-testing:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+
+    //Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.retrofit2:retrofit-mock:$retrofitVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okHttpLoggingInterceptorVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$rxJavaAdapterVersion"
+
+    //Module dependencies
+    implementation project(':domain')
 
 }

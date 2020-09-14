@@ -2,15 +2,17 @@ package com.cabify.domain.repository
 
 import com.cabify.domain.model.Order
 import io.reactivex.Completable
-import io.reactivex.Single
+import io.reactivex.Flowable
 
 interface OrdersRepository {
 
-    fun addOrder(order: Order): Completable
+    fun add(order: Order): Completable
 
-    fun getOrders(): Single<List<Order>>
+    fun get(): Flowable<List<Order>>
 
-    fun deleteOrder(orderId: String): Completable
+    fun delete(order: Order): Completable
 
-    fun updateOrder(orderId: String): Completable
+    fun update(order: Order): Completable
+
+    fun deleteAll(): Completable
 }
