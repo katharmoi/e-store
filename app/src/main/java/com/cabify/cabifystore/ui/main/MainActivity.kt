@@ -1,7 +1,8 @@
-package com.cabify.cabifystore
+package com.cabify.cabifystore.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.cabify.cabifystore.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

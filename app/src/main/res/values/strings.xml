@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Cabify Store</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="navigation_item_home">home</string>
+    <string name="navigation_item_orders">orders</string>
+    <string name="navigation_item_cart">cart</string>
 </resources>
