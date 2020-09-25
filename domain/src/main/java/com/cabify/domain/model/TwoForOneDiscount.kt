@@ -5,10 +5,10 @@ import java.math.BigDecimal
 /**
  * Represents discounts for the bulk orders
  *
- * @param [codes] code of the item that the discount will be applied
+ * @param [code] code of the item that the discount will be applied
  */
 class TwoForOneDiscount(
-    private val code: String
+    override val code: String
 ) : Discount {
     override fun apply(items: List<OrderItem>): BigDecimal {
         var discount = BigDecimal.ZERO

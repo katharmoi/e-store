@@ -60,6 +60,7 @@ internal class BulkPurchaseDiscountTest {
                         2
                     )
                 )
+
                 Truth.assert_()
                     .that(underTest.apply(items))
                     .isEqualTo(BigDecimal.ZERO)

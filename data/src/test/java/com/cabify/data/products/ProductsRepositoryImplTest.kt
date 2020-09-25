@@ -9,6 +9,7 @@ import com.cabify.data.products.service.ProductsService
 import com.cabify.domain.model.Item
 import io.mockk.every
 import io.mockk.mockk
+import io.mockk.verify
 import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Single
@@ -68,6 +69,28 @@ internal class ProductsRepositoryImplTest {
 
             }
         }
+
+        @Nested
+        @DisplayName("When products service succeeds")
+        inner class ProductsServiceSuccessful {
+            @BeforeEach
+            fun setUp() {
+                every {
+                    productsService.getAll()
+                } returns Single.just(listOf(tshirt.toData(), voucher.toData()))
+
+                every {
+                    productsStore.addAll(any())
+                } returns Completable.complete()
+            }
+
+            @Test
+            fun `Then it should emit rows`() {
+                underTest.get().subscribe(subscriber)
+                
+
+            }
+        }
     }
 
     @Nested
@@ -114,7 +137,7 @@ internal class ProductsRepositoryImplTest {
 
         @Nested
         @DisplayName("When products service succeeds")
-        inner class ProductsServiceFail {
+        inner class ProductsServiceSuccessful {
             @BeforeEach
             fun setUp() {
                 every {

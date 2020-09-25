@@ -4,9 +4,9 @@ import android.app.Activity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.cabify.cabifystore.R
-import com.cabify.cabifystore.ui.main.CartFragment
-import com.cabify.cabifystore.ui.main.HomeFragment
-import com.cabify.cabifystore.ui.main.OrdersFragment
+import com.cabify.cabifystore.ui.cart.CartFragment
+import com.cabify.cabifystore.ui.products.ProductsFragment
+import com.cabify.cabifystore.ui.orders.OrdersFragment
 import com.cabify.domain.model.PerActivity
 import javax.inject.Inject
 
@@ -39,9 +39,9 @@ class RouterImpl @Inject constructor(
 
     override fun showHomeScreen(sourceFragmentTag: String) {
         advanceToFragmentWithAction(
-            HomeFragment.TAG,
+            ProductsFragment.TAG,
             sourceFragmentTag,
-            { HomeFragment.newInstance() },
+            { ProductsFragment.newInstance() },
             null
         )
 

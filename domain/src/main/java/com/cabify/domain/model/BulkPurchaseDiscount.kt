@@ -10,7 +10,7 @@ import java.math.BigDecimal
  * @param [minQty] minimum number that is needed for the discount to be applicable
  */
 class BulkPurchaseDiscount(
-    private val code: String,
+    override val code: String,
     private val discount: BigDecimal,
     private val minQty: Int
 ) : Discount {

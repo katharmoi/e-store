@@ -21,8 +21,8 @@ interface CartDao {
     /**
      * Get cart from db
      */
-    @Query("SELECT * FROM cart")
-    fun get(): Flowable<List<DataCart>>
+    @Query("SELECT * FROM cart LIMIT 1")
+    fun get(): Flowable<DataCart>
 
     /**
      * Update a given product

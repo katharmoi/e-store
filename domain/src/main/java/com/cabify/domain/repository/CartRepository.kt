@@ -8,17 +8,23 @@ import io.reactivex.Single
 
 interface CartRepository {
 
-    fun add(item: Item): Completable
+    fun add(item: Item): Single<ShoppingCart>
 
     fun get(item: Item): Single<OrderItem>
 
-    fun update(item: Item, qty: Int): Completable
+    fun update(item: Item, qty: Int): Single<ShoppingCart>
 
-    fun delete(item: Item): Completable
+    fun subtract(item: Item): Single<ShoppingCart>
+
+    fun delete(item: Item): Single<ShoppingCart>
 
     fun getAll(): Single<List<OrderItem>>
 
-    fun clear(): Completable
+    fun getCart(): Single<ShoppingCart>
 
-    fun saveCartToDb(cart:ShoppingCart):Completable
+    fun clear(): Single<ShoppingCart>
+
+    fun saveCartToDb(cart: ShoppingCart): Completable
+
+    fun getCartFromDb(): Single<ShoppingCart>
 }

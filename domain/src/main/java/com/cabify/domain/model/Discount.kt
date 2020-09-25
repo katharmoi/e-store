@@ -8,5 +8,8 @@ import java.math.BigDecimal
  * This interface represents the base for the discounts
  */
 interface Discount {
+
+    val code:String?
+
     fun apply(items: List<OrderItem>): BigDecimal
 }

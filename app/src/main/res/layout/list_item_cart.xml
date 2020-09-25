@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/spacing_small"
+    xmlns:tools="http://schemas.android.com/tools">
+    <ImageView
+        android:id="@+id/cart_img_product"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img_plant_1"
+        android:contentDescription="@string/product_image" />
+
+    <TextView
+        android:id="@+id/cart_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_large"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="@color/grey_90"
+        app:fontFamily="sans-serif-medium"
+        app:layout_constraintStart_toEndOf="@+id/cart_img_product"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Cabify T-Shirt" />
+    <TextView
+        android:id="@+id/cart_item_qty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_large"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="@color/grey_40"
+        app:fontFamily="sans-serif-medium"
+        app:layout_constraintStart_toEndOf="@+id/cart_img_product"
+        app:layout_constraintTop_toBottomOf="@id/cart_item_name"
+        tools:text="Qty:3" />
+
+    <TextView
+        android:id="@+id/cart_item_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/spacing_xlarge"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="@color/grey_90"
+        app:fontFamily="sans-serif-medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="$9.95" />
+    <TextView
+        android:id="@+id/cart_item_discounted_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/spacing_xlarge"
+        android:layout_marginBottom="@dimen/spacing_small"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="@color/grey_90"
+        app:fontFamily="sans-serif-medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:text="$9.95" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

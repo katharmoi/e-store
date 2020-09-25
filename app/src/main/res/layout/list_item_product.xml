@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_card"
+    android:layout_width="match_parent"
+    android:layout_height="220dp"
+    android:layout_marginStart="@dimen/spacing_small"
+    android:layout_marginTop="@dimen/activity_vertical_margin"
+    android:layout_marginEnd="@dimen/spacing_small"
+    app:cardBackgroundColor="@android:color/white"
+    app:cardCornerRadius="@dimen/card_corner_radius"
+    app:cardElevation="@dimen/card_elevation"
+    app:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true">
+
+        <ImageView
+            android:id="@+id/img_product"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/img_plant_1"
+            android:contentDescription="@string/product_image" />
+
+
+        <TextView
+            android:id="@+id/item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_large"
+            android:layout_marginTop="@dimen/spacing_large"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/grey_90"
+            app:fontFamily="sans-serif-medium"
+            app:layout_constraintStart_toEndOf="@+id/img_product"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Cabify T-Shirt" />
+
+        <TextView
+            android:id="@+id/item_desc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_large"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_small"
+            android:drawablePadding="2dp"
+            tools:text="Small description about the products"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/grey_40"
+            app:drawableStartCompat="@drawable/ic_info"
+            app:fontFamily="sans-serif-medium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/img_product"
+            app:layout_constraintTop_toBottomOf="@id/item_name" />
+
+        <TextView
+            android:id="@+id/item_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_large"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/light_green_500"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/img_product"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="$14.32" />
+
+
+        <ImageButton
+            android:id="@+id/btn_item_remove"
+            android:layout_width="32dp"
+            android:layout_height="20dp"
+            android:layout_marginBottom="@dimen/spacing_mxlarge"
+            android:layout_marginEnd="@dimen/spacing_middle"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:tint="@color/grey_40"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/item_count"
+            app:srcCompat="@drawable/ic_remove"
+            android:contentDescription="@string/remove" />
+
+        <TextView
+            android:id="@+id/item_count"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginEnd="@dimen/spacing_middle"
+            android:layout_marginBottom="@dimen/spacing_mxlarge"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:textColor="@color/grey_40"
+            app:fontFamily="sans-serif-medium"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_item_add"
+            tools:text="1" />
+
+        <ImageButton
+            android:id="@+id/btn_item_add"
+            android:layout_width="32dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="@dimen/spacing_xlarge"
+            android:layout_marginBottom="@dimen/spacing_mxlarge"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:tint="@color/grey_40"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/ic_add"
+            android:contentDescription="@string/add" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

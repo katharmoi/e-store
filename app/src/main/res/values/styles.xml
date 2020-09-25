@@ -20,13 +20,31 @@
     </style>
 
     <style name="AppTheme.Launcher">
-        <item name="android:windowBackground">@color/cabify_bg</item>
+        <item name="android:windowBackground">@drawable/splash_screen</item>
         <item name="android:statusBarColor">@color/cabify_bg</item>
         <item name="android:navigationBarColor">@color/cabify_bg</item>
     </style>
 
+    <!--Toolbar-->
+    <style name="Toolbar.Light" parent="@style/AppTheme">
+        <item name="colorControlNormal">@color/grey_60</item>
+        <item name="android:textColorPrimary">@color/grey_60</item>
+    </style>
+
+    <style name="EditText.Flat.Grey.Small" parent="@style/AppTheme">
+        <item name="android:textColorHint">@color/grey_40</item>
+        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Body1</item>
+        <item name="android:textColor">@color/grey_90</item>
+    </style>
+
+    <style name="PrimaryButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:backgroundTint">@color/btnColor</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="cornerRadius">16dp</item>
+    </style>
+
 
     <!--Bottom Navigation-->
-    <style name="BottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView"/>
+    <style name="BottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView" />
 
 </resources>

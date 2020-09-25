@@ -14,19 +14,19 @@ class ShoppingCart(
     val cart: List<OrderItem> = _cart
 
     //used backing property to return immutable list
-    private val _appliedDiscounts: MutableList<String> = mutableListOf()
-    val appliedDiscounts: List<String> = _appliedDiscounts
+    private val _appliedDiscounts: MutableMap<String, BigDecimal> = hashMapOf()
+    val appliedDiscounts: Map<String, BigDecimal> = _appliedDiscounts
 
 
-    //To provide immutability prevents set
+    //prevents set
     var total: BigDecimal = BigDecimal.ZERO
         private set
 
-    //To provide immutability prevents set
+    //prevents set
     var totalDiscounts: BigDecimal = BigDecimal.ZERO
         private set
 
-    //To provide immutability prevents set
+    //prevents set
     var totalAfterDiscounts: BigDecimal = BigDecimal.ZERO
         private set
 
@@ -55,13 +55,20 @@ class ShoppingCart(
      * applied discount
      */
     private fun totalDiscount(): BigDecimal {
-
+        //Clear before each calculation
         var totalDiscount = BigDecimal.ZERO
+        _appliedDiscounts.clear()
 
         for (discount in discounts.distinct()) {
-            if (discount.apply(cart) > BigDecimal.ZERO) {
-                totalDiscount += discount.apply(cart)
-                _appliedDiscounts.add(discount::class.java.simpleName)
+            val amount = discount.apply(cart)
+
+            val discountableItem = _cart.find { it.item.code == discount.code }
+            discountableItem?.applicableDiscount = discount::class.java.simpleName
+
+            if (amount > BigDecimal.ZERO) {
+                totalDiscount += amount
+                _appliedDiscounts[discount::class.java.simpleName] = amount
+                discountableItem?.discount = amount
             }
         }
 
@@ -85,6 +92,27 @@ class ShoppingCart(
         cart.find { it.item.code == item.code }.apply {
             if (this != null) this.count++
             else _cart.add(OrderItem(item, 1))
+        }
+
+        finalTotal()
+    }
+
+    /**
+     * adds all items
+     */
+    fun addAll(items: List<Item>) {
+        items.forEach { add(it) }
+    }
+
+    /**
+     * Decrements item's quantity by one & recalculates total
+     */
+    fun subtract(item: Item) {
+        cart.find { it.item.code == item.code }.apply {
+            if (this != null) {
+                if (this.count > 1) this.count--
+                else _cart.remove(this)
+            }
         }
 
         finalTotal()

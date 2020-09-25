@@ -4,7 +4,19 @@ import android.content.Context
 import android.net.ConnectivityManager
 import com.cabify.cabifystore.BuildConfig
 import com.cabify.cabifystore.utils.NetworkUtils
+import com.cabify.data.cart.CartRepositoryImpl
+import com.cabify.data.cart.db.CartDao
+import com.cabify.data.products.ProductsRepositoryImpl
+import com.cabify.data.products.db.ProductsDao
+import com.cabify.data.products.service.ProductsAPI
+import com.cabify.data.products.service.ProductsService
+import com.cabify.data.products.service.ProductsServiceImpl
 import com.cabify.domain.error.NetworkException
+import com.cabify.domain.model.BulkPurchaseDiscount
+import com.cabify.domain.model.ShoppingCart
+import com.cabify.domain.model.TwoForOneDiscount
+import com.cabify.domain.repository.CartRepository
+import com.cabify.domain.repository.ProductsRepository
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -19,6 +31,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import timber.log.Timber
 import java.io.File
+import java.math.BigDecimal
 import java.util.concurrent.TimeUnit
 import javax.inject.Named
 import javax.inject.Singleton
@@ -37,6 +50,45 @@ class DataModule {
         private const val OKHTTP_OFFLINE_CACHE_DURATION = "offline-cache"
         private const val OKHTTP_NETWORK_INTERCEPTOR = "network_check"
 
+    }
+
+    @Singleton
+    @Provides
+    fun provideApi(retrofit: Retrofit): ProductsAPI {
+        return retrofit.create(ProductsAPI::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideProductsService(api: ProductsAPI): ProductsService {
+        return ProductsServiceImpl(api)
+    }
+
+    @Singleton
+    @Provides
+    fun provideProductsRepository(
+        service: ProductsService,
+        db: ProductsDao
+    ): ProductsRepository {
+        return ProductsRepositoryImpl(service, db)
+    }
+
+    @Singleton
+    @Provides
+    fun provideCart(): ShoppingCart {
+        return ShoppingCart(
+            TwoForOneDiscount("VOUCHER"),
+            BulkPurchaseDiscount("TSHIRT", BigDecimal.ONE, 3)
+        )
+    }
+
+    @Singleton
+    @Provides
+    fun provideCartRepository(
+        cart: ShoppingCart,
+        cartDao: CartDao
+    ): CartRepository {
+        return CartRepositoryImpl(cart, cartDao)
     }
 
     @Singleton

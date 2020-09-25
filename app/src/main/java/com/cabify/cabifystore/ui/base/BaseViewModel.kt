@@ -1,15 +1,11 @@
 package com.cabify.cabifystore.ui.base
 
 import androidx.lifecycle.ViewModel
-import io.reactivex.Scheduler
 import io.reactivex.disposables.CompositeDisposable
 
-abstract class BaseViewModel(
-    private val mainScheduler: Scheduler
-) : ViewModel() {
+abstract class BaseViewModel( ) : ViewModel() {
 
-    val disposables = CompositeDisposable()
-
+    protected val disposables = CompositeDisposable()
 
     override fun onCleared() {
         super.onCleared()

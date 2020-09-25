@@ -10,7 +10,6 @@ import com.cabify.domain.model.OrderItem
 data class DataCart(
     @PrimaryKey val id: Int = 1,
     val items: List<OrderItem>,
-    val appliedDiscounts: List<String>,
     val total: String,
     @ColumnInfo(name = "total_discount") val totalDiscount: String,
     @ColumnInfo(name = "total_after_discounts") val totalAfterDiscount: String
