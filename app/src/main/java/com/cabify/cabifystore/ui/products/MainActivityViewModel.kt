@@ -57,6 +57,7 @@ class MainActivityViewModel(
                 .subscribe(
                     {
                         _items.value = Response.Success(it)
+                        //Load cached cart data if available
                         getCartFromDb()
                     },
                     {

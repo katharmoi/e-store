@@ -21,7 +21,7 @@ import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import java.net.ConnectException
 
-internal class ProductsRepositoryImplTest {
+internal class  ProductsRepositoryImplTest {
 
     lateinit var underTest: ProductsRepositoryImpl
 
