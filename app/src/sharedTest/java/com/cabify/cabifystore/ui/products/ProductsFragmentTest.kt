@@ -6,6 +6,7 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.filters.MediumTest
 import com.cabify.cabifystore.R
 import com.cabify.cabifystore.SharedTestData.mug
 import com.cabify.cabifystore.SharedTestData.tshirt
@@ -28,11 +29,11 @@ import org.robolectric.annotation.LooperMode
  * Integration test for the Products screen
  */
 @RunWith(AndroidJUnit4::class)
+@MediumTest
 @LooperMode(LooperMode.Mode.PAUSED)
 @Config(sdk = [Build.VERSION_CODES.P], application = TestApp::class)
 class ProductsFragmentTest {
-
-
+    
     @Test
     fun displayEmptyView_whenRepositoryHaveNoData() {
 

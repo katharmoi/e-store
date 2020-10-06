@@ -1,6 +1,8 @@
 package com.cabify.cabifystore.di
 
 import android.content.Context
+import com.cabify.cabifystore.ui.cart.CartFragment
+import com.cabify.cabifystore.ui.orders.OrdersFragment
 import com.cabify.cabifystore.ui.products.MainActivity
 import com.cabify.cabifystore.ui.products.ProductsFragment
 import com.cabify.domain.model.PerActivity
@@ -21,5 +23,13 @@ abstract class TestAppModule {
     @PerActivity
     @ContributesAndroidInjector(modules = [TestMainActivityModule::class])
     abstract fun bindMainScreen(): MainActivity
+
+    @PerActivity
+    @ContributesAndroidInjector
+    abstract fun cartScreenInjector(): CartFragment
+
+    @PerActivity
+    @ContributesAndroidInjector
+    abstract fun ordersScreenInjector(): OrdersFragment
 
 }

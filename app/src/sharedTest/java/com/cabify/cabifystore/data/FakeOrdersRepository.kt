@@ -1,12 +1,14 @@
 package com.cabify.cabifystore.data
 
-import com.cabify.cabifystore.SharedTestData.orders
 import com.cabify.domain.model.Order
 import com.cabify.domain.repository.OrdersRepository
 import io.reactivex.Completable
 import io.reactivex.Flowable
 
-class FakeOrdersRepository : OrdersRepository {
+object FakeOrdersRepository : OrdersRepository {
+
+    var orders: List<Order> = listOf()
+
     override fun add(order: Order): Completable {
         return Completable.complete()
     }

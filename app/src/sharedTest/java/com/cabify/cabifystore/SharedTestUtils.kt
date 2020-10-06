@@ -1,6 +1,8 @@
 package com.cabify.cabifystore
 
 import android.view.View
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.testing.FragmentScenario
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.UiController
@@ -19,6 +21,17 @@ object SharedTestUtils {
         }
         return activityScenario
     }
+
+//    fun  <T : Fragment> launchFragment(fragment:T) : FragmentScenario<out T>?{
+//        val fragmentScenario = FragmentScenario.launch(fragment::class.java)
+//        fragmentScenario.onFragment { fr ->
+//            // Disable animations in RecyclerView
+//            val recyclerView = (fr.findViewById(R.id.cart_recycler_view) as RecyclerView)
+//            recyclerView.itemAnimator = null
+//        }
+//
+//        return fragmentScenario
+//    }
 
     fun clickItemWithId(id: Int): ViewAction {
         return object : ViewAction {

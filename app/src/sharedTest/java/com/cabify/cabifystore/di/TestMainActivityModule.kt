@@ -34,14 +34,6 @@ abstract class TestMainActivityModule {
     @ContributesAndroidInjector
     abstract fun homeScreenInjector(): ProductsFragment
 
-    @PerFragment
-    @ContributesAndroidInjector
-    abstract fun cartScreenInjector(): CartFragment
-
-    @PerFragment
-    @ContributesAndroidInjector
-    abstract fun ordersScreenInjector(): OrdersFragment
-
 
     @Binds
     @PerActivity

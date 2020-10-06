@@ -31,6 +31,6 @@ class TestDataModule {
     @Provides
     @Singleton
     fun provideOrdersRepo(): OrdersRepository {
-        return FakeOrdersRepository()
+        return FakeOrdersRepository
     }
 }
