@@ -61,15 +61,9 @@ class ProductsFragment : DaggerFragment() {
                 ViewModelProvider(it, viewModelFactory).get(MainActivityViewModel::class.java)
         }
 
-        viewModel.items.observe(
-            viewLifecycleOwner,
-            Observer<Response<List<Item>>> { parseItems(it) }
-        )
+        viewModel.items.observe(viewLifecycleOwner, { parseItems(it) })
 
-        viewModel.cart.observe(
-            viewLifecycleOwner,
-            Observer<Response<ShoppingCart>> { parseCart(it) }
-        )
+        viewModel.cart.observe(viewLifecycleOwner, { parseCart(it) })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -79,12 +73,9 @@ class ProductsFragment : DaggerFragment() {
         }
     }
 
-
     private fun parseCart(response: Response<ShoppingCart>) {
         when (response) {
             is Response.Success -> {
-                activity?.main_progress?.visibility = View.GONE
-
                 val cart = response.data.cart
                 productsAdapter.items.map {
                     val cartItem = cart.find { cartItem -> cartItem.item.code == it.item.code }

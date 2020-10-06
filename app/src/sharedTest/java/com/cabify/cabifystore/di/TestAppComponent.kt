@@ -1,23 +1,21 @@
 package com.cabify.cabifystore.di
 
-import com.cabify.cabifystore.App
 import dagger.Component
 import dagger.android.AndroidInjectionModule
 import dagger.android.AndroidInjector
 import javax.inject.Singleton
 
+
 @Singleton
 @Component(
     modules = [
         AndroidInjectionModule::class,
-        AppModule::class,
-        DataModule::class,
-        RoomModule::class,
-        SchedulersModule::class
+        TestAppModule::class,
+        TestSchedulersModule::class,
+        TestDataModule::class
     ]
 )
-interface AppComponent : AndroidInjector<App> {
-
+interface TestAppComponent : AndroidInjector<TestApp> {
     @Component.Builder
-    abstract class Builder : AndroidInjector.Builder<App>()
+    abstract class Builder : AndroidInjector.Builder<TestApp>()
 }

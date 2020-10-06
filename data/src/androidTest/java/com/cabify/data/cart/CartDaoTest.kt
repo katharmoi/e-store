@@ -31,7 +31,6 @@ class CartDaoTest {
 
     private val cart = DataCart(
         items = listOf(OrderItem(tshirt, 3)),
-        appliedDiscounts = emptyList(),
         total = BigDecimal(100).toString(),
         totalDiscount = BigDecimal.ZERO.toPlainString(),
         totalAfterDiscount = BigDecimal(100).toString()
@@ -59,7 +58,7 @@ class CartDaoTest {
     fun getCartWhenNoneInserted() {
         cartDao.get()
             .test()
-            .assertValue { res -> res.isEmpty() }
+            .assertNoValues()
 
     }
 
@@ -73,15 +72,13 @@ class CartDaoTest {
         cartDao.get()
             .test()
 
-            //Assert we get only one cart
-            .assertValue { res -> res.size == 1 }
+
             //Assert we get the added cart
             .assertValue { res ->
-                res[0].items == listOf(OrderItem(tshirt, 3))
-                        && res[0].appliedDiscounts.isEmpty()
-                        && res[0].total == BigDecimal(100).toString()
-                        && res[0].totalDiscount == BigDecimal.ZERO.toPlainString()
-                        && res[0].totalAfterDiscount == BigDecimal(100).toString()
+                res.items == listOf(OrderItem(tshirt, 3))
+                        && res.total == BigDecimal(100).toString()
+                        && res.totalDiscount == BigDecimal.ZERO.toPlainString()
+                        && res.totalAfterDiscount == BigDecimal(100).toString()
             }
             .assertValueCount(1)
             .assertNotComplete()
@@ -101,15 +98,13 @@ class CartDaoTest {
         cartDao.get()
             .test()
 
-            //Assert we get only one cart
-            .assertValue { res -> res.size == 1 }
+
             //Assert we get the updated cart
             .assertValue { res ->
-                res[0].items == listOf(OrderItem(tshirt, 3))
-                        && res[0].appliedDiscounts.isEmpty()
-                        && res[0].total == updatedTotal
-                        && res[0].totalDiscount == BigDecimal.ZERO.toPlainString()
-                        && res[0].totalAfterDiscount == BigDecimal(100).toString()
+                res.items == listOf(OrderItem(tshirt, 3))
+                        && res.total == updatedTotal
+                        && res.totalDiscount == BigDecimal.ZERO.toPlainString()
+                        && res.totalAfterDiscount == BigDecimal(100).toString()
             }
             .assertValueCount(1)
             .assertNotComplete()
@@ -129,7 +124,7 @@ class CartDaoTest {
         cartDao.get()
             .test()
             //Assert no cart exists
-            .assertValue { res -> res.isEmpty() }
+            .assertNoValues()
 
     }
 

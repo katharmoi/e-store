@@ -1,10 +1,10 @@
 package com.cabify.cabifystore.ui.products
 
 import com.cabify.cabifystore.InstantExecutorExtension
-import com.cabify.cabifystore.Utils.mug
-import com.cabify.cabifystore.Utils.orders
-import com.cabify.cabifystore.Utils.shoppingCart
-import com.cabify.cabifystore.Utils.tshirt
+import com.cabify.cabifystore.SharedTestData.mug
+import com.cabify.cabifystore.SharedTestData.orders
+import com.cabify.cabifystore.SharedTestData.shoppingCart
+import com.cabify.cabifystore.SharedTestData.tshirt
 import com.cabify.cabifystore.testObserver
 import com.cabify.cabifystore.utils.Response
 import com.cabify.domain.interactor.cart.*
@@ -66,6 +66,7 @@ internal class MainActivityViewModelTest {
         RxJavaPlugins.reset()
         RxAndroidPlugins.reset()
     }
+
 
     @Nested
     @DisplayName("Given get items fail ")

@@ -1,12 +1,11 @@
-package com.cabify.cabifystore
+package com.cabify.cabifystore.di
 
-import com.cabify.cabifystore.di.DaggerAppComponent
+import com.cabify.cabifystore.BuildConfig
 import dagger.android.AndroidInjector
-import dagger.android.support.DaggerApplication
+import dagger.android.DaggerApplication
 import timber.log.Timber
 
-
-open class App : DaggerApplication() {
+class TestApp : DaggerApplication() {
 
     override fun onCreate() {
         super.onCreate()
@@ -19,8 +18,7 @@ open class App : DaggerApplication() {
 
     }
 
-    override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
-        return DaggerAppComponent.builder().create(this)
+    override fun applicationInjector(): AndroidInjector<out TestApp> {
+        return DaggerTestAppComponent.builder().create(this)
     }
-
 }

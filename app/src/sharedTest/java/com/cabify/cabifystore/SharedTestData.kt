@@ -4,7 +4,7 @@ import com.cabify.domain.model.*
 import java.math.BigDecimal
 import java.util.*
 
-object TestData {
+object SharedTestData {
     val tshirt = Item(
         code = "TSHIRT",
         name = "Cabify T-Shirt",

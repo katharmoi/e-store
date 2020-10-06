@@ -13,14 +13,12 @@ class NetworkUtils @Inject constructor(private val cM: ConnectivityManager) {
 
     private val isConnectedToNetwork: Boolean
         get() {
-            return cM.activeNetworkInfo != null && cM.activeNetworkInfo.isConnected
+            return true
+            //return cM.activeNetworkInfo != null && cM.activeNetworkInfo.isConnected
         }
 
     fun isConnected(): Boolean {
         return isConnectedToNetwork
     }
 
-    fun isUnMetered(): Boolean {
-        return cM.isActiveNetworkMetered
-    }
 }
