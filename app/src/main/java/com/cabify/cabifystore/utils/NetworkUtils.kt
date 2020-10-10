@@ -8,13 +8,11 @@ import javax.inject.Singleton
  * Network related utility functions
  */
 @Singleton
-class NetworkUtils @Inject constructor(private val cM: ConnectivityManager) {
-
+class NetworkUtils @Inject constructor(private val connectivityManager: ConnectivityManager): ConnectivityManager.NetworkCallback() {
 
     private val isConnectedToNetwork: Boolean
         get() {
-            return true
-            //return cM.activeNetworkInfo != null && cM.activeNetworkInfo.isConnected
+            return connectivityManager.activeNetworkInfo != null
         }
 
     fun isConnected(): Boolean {

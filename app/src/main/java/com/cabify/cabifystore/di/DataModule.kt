@@ -36,6 +36,7 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Named
 import javax.inject.Singleton
 
+
 /**
  * Providers for repository, service and Retrofit objects
  */

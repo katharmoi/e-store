@@ -1,9 +1,11 @@
 package com.cabify.cabifystore.di
 
 import com.cabify.cabifystore.App
+import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
 import dagger.android.AndroidInjector
+import okhttp3.OkHttpClient
 import javax.inject.Singleton
 
 @Singleton
@@ -17,7 +19,21 @@ import javax.inject.Singleton
     ]
 )
 interface AppComponent : AndroidInjector<App> {
-
+    fun getOkHttpClient(): OkHttpClient
     @Component.Builder
-    abstract class Builder : AndroidInjector.Builder<App>()
+    interface Builder {
+        @BindsInstance fun application(app:App):Builder
+
+        fun build():AppComponent
+    }
 }
+//interface AppComponent : AndroidInjector<App> {
+//    @Component.Builder
+//    abstract class Builder : AndroidInjector.Builder<App>()
+//
+//    fun getOkHttpClient(): OkHttpClient
+//}
+
+
+
+
