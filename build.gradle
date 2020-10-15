@@ -23,7 +23,7 @@ allprojects {
 
 project.ext {
     compiledSdkVersion = 30
-    minSdkVersion = 21
+    minSdkVersion = 23
     targetSdkVersion = 30
 
     //AppCompat

@@ -3,7 +3,6 @@ package com.cabify.cabifystore.di
 import android.content.Context
 import android.net.ConnectivityManager
 import com.cabify.cabifystore.BuildConfig
-import com.cabify.cabifystore.utils.NetworkUtils
 import com.cabify.data.cart.CartRepositoryImpl
 import com.cabify.data.cart.db.CartDao
 import com.cabify.data.products.ProductsRepositoryImpl
@@ -11,12 +10,14 @@ import com.cabify.data.products.db.ProductsDao
 import com.cabify.data.products.service.ProductsAPI
 import com.cabify.data.products.service.ProductsService
 import com.cabify.data.products.service.ProductsServiceImpl
+import com.cabify.data.utils.NetworkUtilsImpl
 import com.cabify.domain.error.NetworkException
 import com.cabify.domain.model.BulkPurchaseDiscount
 import com.cabify.domain.model.ShoppingCart
 import com.cabify.domain.model.TwoForOneDiscount
 import com.cabify.domain.repository.CartRepository
 import com.cabify.domain.repository.ProductsRepository
+import com.cabify.domain.utils.NetworkUtils
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -51,6 +52,12 @@ class DataModule {
         private const val OKHTTP_OFFLINE_CACHE_DURATION = "offline-cache"
         private const val OKHTTP_NETWORK_INTERCEPTOR = "network_check"
 
+    }
+
+    @Singleton
+    @Provides
+    fun provideNetworkUtils(connectivityManager: ConnectivityManager): NetworkUtils {
+        return NetworkUtilsImpl(connectivityManager)
     }
 
     @Singleton

@@ -60,9 +60,9 @@
                 <include
                     android:id="@+id/cart_empty_view"
                     layout="@layout/empty_cart"
-                    android:visibility="gone"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp" />
+                    android:layout_height="240dp"
+                    android:visibility="gone" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/cart_recycler_view"
@@ -339,7 +339,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/cart_pay"
-            style="@style/PrimaryButton"
+            style="@style/PrimaryButtonWithDisabledState"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_margin="@dimen/spacing_medium"

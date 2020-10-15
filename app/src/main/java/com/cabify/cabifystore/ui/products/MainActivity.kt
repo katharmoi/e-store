@@ -2,14 +2,17 @@ package com.cabify.cabifystore.ui.products
 
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.cabify.cabifystore.R
 import com.cabify.cabifystore.ui.cart.CartFragment
-import com.cabify.cabifystore.ui.products.MainActivityViewModel.ScreenStates.*
 import com.cabify.cabifystore.ui.orders.OrdersFragment
+import com.cabify.cabifystore.ui.products.MainActivityViewModel.ScreenStates.*
 import com.cabify.cabifystore.utils.activity.ActivityUtils
+import com.cabify.cabifystore.utils.custom_views.CustomSnackbar
 import com.cabify.cabifystore.utils.router.Router
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.snackbar.Snackbar
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
@@ -50,6 +53,24 @@ class MainActivity : DaggerAppCompatActivity(),
 
         //Bind navigation
         navigationBar.setOnNavigationItemSelectedListener(this)
+
+        //observe network status
+        viewModel.networkStatus.observe(this, { parseNetworkStatus(it) })
+    }
+
+    private fun parseNetworkStatus(networkStatus: Boolean) {
+        if (networkStatus) {
+            CustomSnackbar.make(layout_main_activity, Snackbar.LENGTH_SHORT).also {
+                it.setText(getString(R.string.notification_connected))
+                it.view.setBackgroundColor(ContextCompat.getColor(this, R.color.light_green_500))
+            }.show()
+        } else {
+            CustomSnackbar.make(layout_main_activity, Snackbar.LENGTH_SHORT).also {
+                it.setText(getString(R.string.notification_no_network))
+                it.view.setBackgroundColor(ContextCompat.getColor(this, R.color.grey_90))
+            }.show()
+        }
+
     }
 
     override fun onBackPressed() {
@@ -59,7 +80,6 @@ class MainActivity : DaggerAppCompatActivity(),
             router.showHomeScreen(sourceFragmentTag(R.id.navigation_item_home))
             navigationBar.selectedItemId = R.id.navigation_item_home
         }
-
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

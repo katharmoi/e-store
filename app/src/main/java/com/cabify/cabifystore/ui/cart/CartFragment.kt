@@ -2,12 +2,11 @@ package com.cabify.cabifystore.ui.cart
 
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
@@ -45,7 +44,7 @@ class CartFragment : DaggerFragment() {
         //Initialize cart recycler
         cartAdapter = CartAdapter(
             itemView = R.layout.list_item_cart,
-            emptyView = view.cart_empty_view,
+            emptyView = null,
             factory = { v: View -> CartViewHolder(v) },
             itemListener = null
         )
@@ -67,7 +66,7 @@ class CartFragment : DaggerFragment() {
         super.onViewCreated(view, savedInstanceState)
         cart_pay.setOnClickListener {
             activity?.main_progress?.visibility = View.VISIBLE
-            Handler().postDelayed({ viewModel.finishOrder() }, 1000)
+            Handler(Looper.getMainLooper()).postDelayed({ viewModel.finishOrder() }, 1000)
         }
     }
 
@@ -80,21 +79,22 @@ class CartFragment : DaggerFragment() {
 
         viewModel.cart.observe(
             viewLifecycleOwner,
-            Observer<Response<ShoppingCart>> { parseCart(it) }
+            { parseCart(it) }
         )
 
         viewModel.payment.observe(
             viewLifecycleOwner,
-            Observer<Response<ShoppingCart>> { parsePayment(it) }
+            { parsePayment(it) }
         )
     }
 
     private fun parseCart(cartResponse: Response<ShoppingCart>) {
         when (cartResponse) {
             is Response.Success -> {
-                Log.e("CART FR PARSE CALLED:","CALLED")
                 cart_pay.isEnabled = cartResponse.data.cart.isNotEmpty()
                 fillCartData(cartResponse.data)
+                cart_empty_view.visibility = if (cartResponse.data.cart.isEmpty()) View.VISIBLE
+                else View.GONE
             }
             is Response.Error -> {
 
@@ -107,7 +107,6 @@ class CartFragment : DaggerFragment() {
     private fun parsePayment(paymentResponse: Response<ShoppingCart>) {
         when (paymentResponse) {
             is Response.Success -> {
-                Log.e("PAYMENT CALLED:","CALLED")
                 activity?.main_progress?.visibility = View.GONE
                 Toast.makeText(
                     context,

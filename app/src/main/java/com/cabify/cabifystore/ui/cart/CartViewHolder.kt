@@ -34,7 +34,10 @@ class CartViewHolder(itemView: View) : BaseViewHolder<OrderItem>(itemView) {
 
             cart_item_total.apply {
                 text = totalText
-                if (element.discount != null) paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+                if (element.discount != null){
+                    paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+                    setTextColor(ContextCompat.getColor(context,R.color.grey_40))
+                }
             }
 
             cart_item_discounted_total.text = discountedTotalText

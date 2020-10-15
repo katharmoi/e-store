@@ -27,12 +27,6 @@ interface AppComponent : AndroidInjector<App> {
         fun build():AppComponent
     }
 }
-//interface AppComponent : AndroidInjector<App> {
-//    @Component.Builder
-//    abstract class Builder : AndroidInjector.Builder<App>()
-//
-//    fun getOkHttpClient(): OkHttpClient
-//}
 
 
 

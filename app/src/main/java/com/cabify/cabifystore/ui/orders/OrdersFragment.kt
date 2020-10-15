@@ -1,11 +1,9 @@
 package com.cabify.cabifystore.ui.orders
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.cabify.cabifystore.R
@@ -62,7 +60,7 @@ class OrdersFragment : DaggerFragment() {
 
         viewModel.orders.observe(
             viewLifecycleOwner,
-            Observer<Response<List<Order>>> { parseOrders(it) }
+            { parseOrders(it) }
         )
 
         viewModel.getOrders()
@@ -71,7 +69,6 @@ class OrdersFragment : DaggerFragment() {
     private fun parseOrders(response: Response<List<Order>>) {
         when (response) {
             is Response.Success -> {
-                Log.e("ORDERS:","CALLED")
                 activity?.main_progress?.visibility = View.GONE
                 ordersAdapter.items = response.data.map { it.copy() }
             }

@@ -6,6 +6,7 @@ import com.cabify.cabifystore.di.SchedulersModule
 import com.cabify.domain.interactor.cart.*
 import com.cabify.domain.interactor.orders.GetOrdersUseCase
 import com.cabify.domain.interactor.products.GetProductsUseCase
+import com.cabify.domain.interactor.utils.ObserveNetworkUseCase
 import com.cabify.domain.model.PerActivity
 import io.reactivex.Scheduler
 import javax.inject.Inject
@@ -22,7 +23,8 @@ class MainActivityViewModelFactory
     private val processOrderUseCase: ProcessOrderUseCase,
     private val getOrdersUseCase: GetOrdersUseCase,
     private val getCartFromDbUseCase: GetCartFromDbUseCase,
-    private val saveCartToDbUseCase: SaveCartToDbUseCase
+    private val saveCartToDbUseCase: SaveCartToDbUseCase,
+    private val observeNetworkUseCase: ObserveNetworkUseCase
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
@@ -37,7 +39,8 @@ class MainActivityViewModelFactory
                 processOrderUseCase,
                 getOrdersUseCase,
                 getCartFromDbUseCase,
-                saveCartToDbUseCase
+                saveCartToDbUseCase,
+                observeNetworkUseCase
             ) as T
         } else throw IllegalArgumentException("Unknown View Model Class")
     }

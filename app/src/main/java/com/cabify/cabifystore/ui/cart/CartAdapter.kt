@@ -9,7 +9,7 @@ import kotlin.properties.Delegates
 
 class CartAdapter(
     itemView: Int,
-    emptyView: View,
+    emptyView: View?,
     factory: (view: View) -> CartViewHolder,
     val itemListener: OnItemSelectListener?
 ) : BaseAdapter<CartViewHolder, OrderItem>(

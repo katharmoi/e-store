@@ -1,6 +1,5 @@
 package com.cabify.cabifystore.ui.products
 
-import android.util.Log
 import android.view.View
 import com.cabify.cabifystore.ui.base.BaseAdapter
 import com.cabify.cabifystore.ui.base.OnItemSelectListener

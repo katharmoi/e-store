@@ -7,6 +7,7 @@ import com.cabify.cabifystore.ui.base.BaseViewHolder
 import com.cabify.cabifystore.ui.base.OnItemSelectListener
 import com.cabify.domain.model.OrderItem
 import kotlinx.android.synthetic.main.list_item_product.view.*
+import java.math.BigDecimal
 
 class ProductsViewHolder(itemView: View, private val viewModel: MainActivityViewModel) :
     BaseViewHolder<OrderItem>(itemView) {
@@ -15,7 +16,10 @@ class ProductsViewHolder(itemView: View, private val viewModel: MainActivityView
         with(itemView) {
             item_name.text = element.item.name
             val applicableDiscountVisibility =
-                if (element.discount != null) View.VISIBLE else View.INVISIBLE
+                if (element.discount != null && element.discount!! > BigDecimal.ZERO) {
+                    View.VISIBLE
+                } else View.INVISIBLE
+
             item_desc.apply {
                 visibility = applicableDiscountVisibility
                 text = context.getString(
@@ -23,8 +27,11 @@ class ProductsViewHolder(itemView: View, private val viewModel: MainActivityView
                     element.applicableDiscount
                 )
             }
+
             item_price.text = context.getString(R.string.price_template, "€", element.item.price)
+
             item_count.text = element.count.toString()
+
             val image = when (element.item.code) {
                 "TSHIRT" -> ContextCompat.getDrawable(context, R.drawable.tshirt)
                 "VOUCHER" -> ContextCompat.getDrawable(context, R.drawable.voucher)

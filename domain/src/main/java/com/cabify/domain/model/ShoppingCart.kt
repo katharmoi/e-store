@@ -55,12 +55,13 @@ class ShoppingCart(
      * applied discount
      */
     private fun totalDiscount(): BigDecimal {
-        //Clear before each calculation
+        //Clear discounts before each calculation
         var totalDiscount = BigDecimal.ZERO
-        _appliedDiscounts.clear()
+        removeDiscounts()
+
 
         for (discount in discounts.distinct()) {
-            val amount = discount.apply(cart)
+            val amount = discount.apply(_cart)
 
             val discountableItem = _cart.find { it.item.code == discount.code }
             discountableItem?.applicableDiscount = discount::class.java.simpleName
@@ -171,6 +172,18 @@ class ShoppingCart(
         total = BigDecimal.ZERO
         totalAfterDiscounts = BigDecimal.ZERO
         totalDiscounts = BigDecimal.ZERO
+    }
+
+    /**
+     *Clear all discount data for each item in the cart
+     * and cart applied discounts
+     */
+    private fun removeDiscounts() {
+        _appliedDiscounts.clear()
+        _cart.forEach {
+            it.discount = null
+            it.applicableDiscount = null
+        }
     }
 
     override fun toString(): String {

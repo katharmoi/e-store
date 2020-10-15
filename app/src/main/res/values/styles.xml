@@ -43,6 +43,10 @@
         <item name="cornerRadius">16dp</item>
     </style>
 
+    <style name="PrimaryButtonWithDisabledState" parent="PrimaryButton">
+        <item name="android:backgroundTint">@color/material_btn_colors</item>
+    </style>
+
 
     <!--Bottom Navigation-->
     <style name="BottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView" />

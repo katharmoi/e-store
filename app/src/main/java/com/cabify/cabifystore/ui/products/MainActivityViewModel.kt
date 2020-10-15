@@ -8,6 +8,7 @@ import com.cabify.cabifystore.utils.SingleLiveEvent
 import com.cabify.domain.interactor.cart.*
 import com.cabify.domain.interactor.orders.GetOrdersUseCase
 import com.cabify.domain.interactor.products.GetProductsUseCase
+import com.cabify.domain.interactor.utils.ObserveNetworkUseCase
 import com.cabify.domain.model.Item
 import com.cabify.domain.model.Order
 import com.cabify.domain.model.ShoppingCart
@@ -23,10 +24,12 @@ class MainActivityViewModel(
     private val processOrderUseCase: ProcessOrderUseCase,
     private val getOrdersUseCase: GetOrdersUseCase,
     private val getCartFromDbUseCase: GetCartFromDbUseCase,
-    private val saveCartToDbUseCase: SaveCartToDbUseCase
+    private val saveCartToDbUseCase: SaveCartToDbUseCase,
+    private val observerNetworkUseCase: ObserveNetworkUseCase
 ) : BaseViewModel() {
 
     init {
+        observeNetwork()
         getItems()
     }
 
@@ -35,6 +38,9 @@ class MainActivityViewModel(
     }
 
     var currentState = ScreenStates.HOME
+
+    private val _networkStatus = SingleLiveEvent<Boolean>()
+    val networkStatus: LiveData<Boolean> = _networkStatus
 
     private val _items = MutableLiveData<Response<List<Item>>>()
     val items: LiveData<Response<List<Item>>> = _items
@@ -47,6 +53,16 @@ class MainActivityViewModel(
 
     private val _orders = MutableLiveData<Response<List<Order>>>()
     val orders: LiveData<Response<List<Order>>> = _orders
+
+    private fun observeNetwork() {
+        disposables.add(
+            observerNetworkUseCase()
+                .observeOn(mainScheduler)
+                .subscribe(
+                    { _networkStatus.value = it },
+                    { Timber.e(it) })
+        )
+    }
 
     fun getItems() {
         disposables.add(

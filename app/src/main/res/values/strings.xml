@@ -24,4 +24,8 @@
     <string name="empty_order">Seems like you don\'t have any order</string>
     <string name="error_network">Please check your connection and try again</string>
     <string name="retry">retry</string>
+    <string name="notification_cached_data">No internet! Displaying cached data.</string>
+    <string name="notification_connected">Connected To The Internet</string>
+    <string name="notification_no_network">No Network!</string>
+    <string name="cart_no_item">No item in the cart</string>
 </resources>
