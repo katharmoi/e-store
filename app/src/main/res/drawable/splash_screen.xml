@@ -2,10 +2,11 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android" android:opacity="opaque">
 
     <item android:drawable="@color/cabify_bg"/>
-    <item>
-        <bitmap
-            android:src="@drawable/cabify_logo"
-            android:gravity="center"/>
+    <item
+        android:width="144dp"
+        android:height="48dp"
+        android:drawable="@drawable/cabify_logo"
+        android:gravity="center">
     </item>
 
 </layer-list>
