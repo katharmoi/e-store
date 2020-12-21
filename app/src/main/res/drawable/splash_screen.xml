@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android" android:opacity="opaque">
 
-    <item android:drawable="@color/cabify_bg"/>
+    <item android:drawable="@color/primaryColor"/>
     <item
-        android:width="144dp"
-        android:height="48dp"
-        android:drawable="@drawable/cabify_logo"
+        android:width="200dp"
+        android:height="67dp"
+        android:drawable="@drawable/store_logo"
         android:gravity="center">
     </item>
 

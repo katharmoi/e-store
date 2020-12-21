@@ -119,7 +119,6 @@
             tools:text="Applied Discounts:" />
 
         <TextView
-            android:id="@+id/order_total_after_discounts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_medium"

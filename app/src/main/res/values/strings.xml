@@ -1,9 +1,8 @@
 <resources>
-    <string name="app_name">Cabify Store</string>
+    <string name="app_name">Store</string>
     <string name="navigation_item_home">home</string>
     <string name="navigation_item_orders">orders</string>
     <string name="navigation_item_cart">cart</string>
-    <string name="no_products">No Products</string>
     <string name="add">add item</string>
     <string name="remove">remove item</string>
     <string name="product_image">product image</string>
@@ -14,12 +13,12 @@
     <string name="total_after_discounts_template">Final Total: %1$s%2$.2f</string>
     <string name="pay">process payment</string>
     <string name="successful_payment">Thanks for your order ;)</string>
+    <string name="error_cart">A problem occurred. Please retry.</string>
     <string name="unsuccessful_payment">A problem occurred. Please retry.</string>
     <string name="order_id_caption">Order Id: </string>
     <string name="order_date">Order date:</string>
     <string name="applied_discount_template">%1$s is applied</string>
     <string name="empty_cart">empty cart</string>
-    <string name="unknown_problem">Something went wrong</string>
     <string name="exclamation">Oooops!</string>
     <string name="empty_order">Seems like you don\'t have any order</string>
     <string name="error_network">Please check your connection and try again</string>
@@ -28,4 +27,19 @@
     <string name="notification_connected">Connected To The Internet</string>
     <string name="notification_no_network">No Network!</string>
     <string name="cart_no_item">No item in the cart</string>
+    <string name="products">Products</string>
+    <string name="shipping">Shipping</string>
+    <string name="name">Name</string>
+    <string name="phone">Phone</string>
+    <string name="address">Address</string>
+    <string name="country">Country</string>
+    <string name="zip">ZIP Code</string>
+    <string name="city">City</string>
+    <string name="state">State / Province</string>
+    <string name="payment">Payment</string>
+    <string name="card_type">Card Type</string>
+    <string name="name_on_cart">Name on Card</string>
+    <string name="card_number">Card Number</string>
+    <string name="expire_date">Expired Date</string>
+    <string name="cvv">CVV</string>
 </resources>

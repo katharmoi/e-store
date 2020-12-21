@@ -3,33 +3,20 @@
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryVariant">@color/primaryDarkColor</item>
-        <item name="colorOnPrimary">@color/primaryTextColor</item>
         <item name="colorSecondary">@color/secondaryColor</item>
-        <item name="colorSecondaryVariant">@color/secondaryDarkColor</item>
-        <item name="colorOnSecondary">@color/primaryTextColor</item>
-        <item name="colorError">@color/errorColor</item>
-        <item name="colorOnError">@color/primaryTextColor</item>
-        <item name="android:colorBackground">@color/backgroundColor</item>
         <item name="android:statusBarColor">@color/primaryDarkColor</item>
         <item name="colorOnBackground">#212121</item>
 
         <item name="android:navigationBarColor">@color/primaryDarkColor</item>
-        <item name="android:textColorPrimary">@color/primaryTextColor</item>
-        <item name="android:textColorSecondary">@color/secondaryTextColor</item>
 
     </style>
 
     <style name="AppTheme.Launcher">
         <item name="android:windowBackground">@drawable/splash_screen</item>
-        <item name="android:statusBarColor">@color/cabify_bg</item>
-        <item name="android:navigationBarColor">@color/cabify_bg</item>
+        <item name="android:statusBarColor">@color/primaryDarkColor</item>
+        <item name="android:navigationBarColor">@color/primaryColor</item>
     </style>
 
-    <!--Toolbar-->
-    <style name="Toolbar.Light" parent="@style/AppTheme">
-        <item name="colorControlNormal">@color/grey_60</item>
-        <item name="android:textColorPrimary">@color/grey_60</item>
-    </style>
 
     <style name="EditText.Flat.Grey.Small" parent="@style/AppTheme">
         <item name="android:textColorHint">@color/grey_40</item>
@@ -49,6 +36,6 @@
 
 
     <!--Bottom Navigation-->
-    <style name="BottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView" />
+    <style name="BottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView.Colored" />
 
 </resources>

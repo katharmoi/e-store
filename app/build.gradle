@@ -7,7 +7,7 @@ android {
     compileSdkVersion project.compiledSdkVersion
 
     defaultConfig {
-        applicationId "com.cabify.cabifystore"
+        applicationId "io.appicenter.store"
         minSdkVersion project.minSdkVersion
         targetSdkVersion project.targetSdkVersion
         versionCode 1
@@ -105,7 +105,7 @@ dependencies {
     testImplementation "androidx.test:rules:$androidXTestRulesVersion"
     debugImplementation "androidx.fragment:fragment-testing:$fragmentVersion"
     implementation "androidx.test:core:$androidXTestCoreVersion"
-    implementation "androidx.fragment:fragment:$fragmentVersion"
+    implementation "androidx.fragment:fragment-ktx:$fragmentVersion"
     implementation "androidx.fragment:fragment-ktx:$fragmentKtxVersion"
 
 
